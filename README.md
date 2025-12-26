@@ -11,10 +11,7 @@ exp04/
 ├── task1_RDD.py                 # 任务一：RDD 统计
 ├── task2_SQL.py                 # 任务二：Spark SQL 统计
 ├── task3_Mlib.py                # 任务三：MLlib 预测
-├── dataset/
-│   ├── ccf_offline_stage1_train.csv
-│   ├── ccf_offline_stage1_test_revised.csv
-│   └── ccf_online_stage1_train.csv
+├── dataset/                     # 当前为空
 ├── result/
 │   ├── 1_coupon_use_count/...
 │   ├── 1_online_consumption_table/...
@@ -219,3 +216,20 @@ spark平台运行状况如下：
 提交到天池平台的结果：
 
 ![](pics/3-score.png)
+
+
+## 问题与解决
+
+### 1）spark版本匹配
+
+spark4.0.0与其他组件有版本冲突，提示需要降级；重新安装3.5.7版本后顺利启动。
+
+### 2）天池平台评分低
+
+考虑可能的原因有以下：
+- 特征过少
+- 数据量不足
+- 未作最佳超参数搜索
+- 模型能力较弱
+
+对应地，应该扩大数据量（考虑数据集已经给定，可能无法实现）而后提取更多特征，选择更好的模型如GBT等，在有条件的设备上做最佳超参数搜索；或直接引入小参数大模型进行训练/微调。受限于时间与设备，该部分留待未来实现。
