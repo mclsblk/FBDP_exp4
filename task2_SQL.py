@@ -78,7 +78,7 @@ def main():
     for row in rows:
         print(f"{row['Merchant_id']}   {row['pos_ratio']}    {row['Pos_Count']}    {row['total_count']}")
 
-    # 存储结果 (可选)
+    # 存储结果
     top_merchants.write.csv("result/2_top_merchants", header=True)
 
     spark.stop()
